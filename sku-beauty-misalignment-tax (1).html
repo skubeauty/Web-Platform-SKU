@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Misalignment Tax | SKU Beauty™</title>
+  <meta name="description" content="A case study by SKU Beauty™. Most beauty launches don't fail because the product is wrong. They fail because alignment happens too late." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://formspree.io">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap&font-display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── CASE STUDY SPECIFIC STYLES ── */
+    /* These styles handle the unique layout blocks of this specific case study */
+    
+    .cs-hero { background: var(--yellow); padding: 160px 56px 80px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.15s; }
+    .cs-hero-inner { max-width: 900px; margin: 0 auto; }
+    .cs-hero-eyebrow { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .cs-hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--navy); }
+    .cs-hero h1 { font-family: var(--font-display); font-size: clamp(72px, 13vw, 148px); line-height: 0.92; color: var(--navy-deep); letter-spacing: 0.01em; margin-bottom: 2rem; }
+    .cs-hero-sub { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--navy); max-width: 560px; line-height: 1.5; margin-bottom: 2.5rem; }
+    .cs-hero-lede { font-family: var(--font-body); font-size: 1rem; font-weight: 400; color: var(--navy-deep); max-width: 620px; line-height: 1.8; border-left: 3px solid var(--navy); padding-left: 1.25rem; }
+
+    .cs-article { max-width: 900px; margin: 0 auto; padding: 5rem 56px 6rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s; }
+    .s-label { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
+    .s-label::after { content: ''; flex: 1; height: 1px; background: var(--slate-light); }
+
+    .cs-article h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.2; color: var(--navy); margin-bottom: 1.5rem; }
+    .cs-article h2 em { font-style: italic; color: var(--navy-mid); }
+    .cs-article h3 { font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.6rem; }
+    .cs-article p { font-size: 0.975rem; font-weight: 400; color: var(--ink); line-height: 1.8; max-width: 660px; margin-bottom: 1.2rem; }
+    .cs-article p:last-child { margin-bottom: 0; }
+    .cs-section { margin-bottom: 5rem; }
+    hr.divider { border: none; border-top: 1px solid var(--slate-light); margin: 0 0 5rem; }
+
+    .pull-quote { border-left: 3px solid var(--yellow); padding: 1.5rem 0 1.5rem 2rem; margin: 3rem 0; background: var(--white); }
+    .pull-quote p { font-family: var(--font-serif); font-size: clamp(1.25rem, 2.5vw, 1.65rem); font-weight: 300; font-style: italic; color: var(--navy); line-height: 1.45; max-width: 580px; margin: 0; }
+
+    .failure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--slate-light); border: 2px solid var(--slate-light); margin: 2.5rem 0; }
+    .f-card { background: var(--white); padding: 2rem 1.75rem; transition: background 0.18s ease; position: relative; cursor: none; }
+    .f-card:hover { background: var(--diamond); }
+    .f-card-num { font-family: var(--font-display); font-size: 3.5rem; line-height: 1; color: var(--slate-light); margin-bottom: 0.5rem; }
+    .f-card-label { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--yellow); display: inline-block; }
+    .f-card p { font-size: 0.875rem; color: var(--slate); line-height: 1.7; margin: 0; }
+
+    .signals-box { background: var(--navy-deep); padding: 3rem 3rem 3rem; margin: 3rem 0; }
+    .signals-box .s-label { color: var(--yellow); }
+    .signals-box .s-label::after { background: #2E3D6A; }
+    .signals-box h3 { font-family: var(--font-serif); font-weight: 300; font-size: 1.4rem; font-style: italic; color: var(--white); margin-bottom: 2rem; }
+    .signal-list { list-style: none; padding: 0; }
+    .signal-list li { font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; color: var(--slate-light); padding: 1rem 0; border-top: 1px solid #2A3860; display: flex; align-items: flex-start; gap: 1rem; line-height: 1.65; }
+    .signal-list li::before { content: ''; display: block; width: 6px; height: 6px; min-width: 6px; background: var(--yellow); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); margin-top: 0.45rem; }
+
+    .stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--slate-light); margin: 3rem 0; background: var(--slate-light); gap: 1px; }
+    .stat-item { background: var(--white); padding: 2rem 1.75rem; text-align: center; }
+    .stat-num { font-family: var(--font-display); font-size: 3rem; color: var(--navy); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-desc { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); line-height: 1.4; margin: 0; max-width: 100%; }
+
+    .callout { background: var(--navy); padding: 2.5rem 3rem; margin: 3rem 0; display: flex; gap: 2rem; align-items: center; }
+    .callout-illo { font-family: var(--font-display); font-size: 5rem; color: var(--yellow); line-height: 1; flex-shrink: 0; opacity: 0.25; }
+    .callout p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; font-style: italic; color: var(--white); line-height: 1.55; margin: 0; max-width: 100%; }
+
+    .cta-block { background: var(--navy-deep); padding: 5rem 3rem; text-align: center; margin-top: 5rem; position: relative; }
+    .cta-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--yellow); }
+    .cta-eyebrow { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.75rem; }
+    .cta-block h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; color: var(--white); margin-bottom: 1.5rem; max-width: 100%; }
+    .cta-block p { font-size: 0.9rem; font-weight: 300; color: var(--slate-light); max-width: 480px; margin: 0 auto 2.75rem; line-height: 1.8; }
+    .cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--yellow); color: var(--navy-deep); text-decoration: none; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 36px; transition: background 0.2s ease, transform 0.2s; cursor: none; }
+    .cta-btn:hover { background: var(--yellow-d); transform: translateY(-2px); }
+    .cta-sub { margin-top: 1.25rem !important; font-size: 12px !important; color: var(--slate) !important; }
+
+    @media (max-width: 768px) {
+      .cs-hero { padding: 120px 28px 60px; }
+      .cs-article { padding: 3.5rem 28px 4rem; }
+      .failure-grid { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .callout { flex-direction: column; gap: 0.5rem; }
+      .callout-illo { font-size: 3rem; }
+      .signals-box { padding: 2rem 1.5rem; }
+      .cta-block { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="nav" role="navigation" id="main-nav">
+  <div style="display:flex;align-items:center;gap:32px;">
+    <a href="index.html" class="nav-logo" aria-label="SKU Beauty — Home">
+      <img src="data:image/png;base64,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" alt="SKU Beauty" style="height:46px;width:auto;">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <button type="button" aria-haspopup="true">Origin &amp; Team<span class="nav-chevron"></span></button>
+      <div class="nav-dropdown" role="menu">
+        <a href="our-story.html" class="nav-dd-link" role="menuitem">
+          <div class="nav-dd-link-inner"><span>Our Story</span></div>
+        </a>
+        <a href="our-story.html#team" class="nav-dd-link" role="menuitem">
+          <div class="nav-dd-link-inner"><span>Our Team</span><span class="nav-dd-sub">The people behind SKU Beauty</span></div>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <button type="button" aria-haspopup="true">The SKU System<span class="nav-chevron"></span></button>
+      <div class="nav-dropdown" role="menu">
+        <a href="index.html#approach" class="nav-dd-link" role="menuitem">
+          <div class="nav-dd-link-inner"><span>Our Approach</span><span class="nav-dd-sub">How we think and work</span></div>
+        </a>
+        <a href="index.html#sku-system" class="nav-dd-link" role="menuitem">
+          <div class="nav-dd-link-inner"><span>Closed-Loop System</span><span class="nav-dd-sub">The execution framework</span></div>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <button type="button" aria-haspopup="true">Services<span class="nav-chevron"></span></button>
+      <div class="nav-dropdown" role="menu">
+        <a href="index.html#services" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>Launch Intelligence &amp; Risk Control</span></div></a>
+        <a href="index.html#services" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>Fractional Leadership</span></div></a>
+        <a href="index.html#services" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>Innovative Formulations</span></div></a>
+        <a href="index.html#fit" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>Is SKU Right For You?</span></div></a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <button type="button" aria-haspopup="true">Execution Intelligence<span class="nav-chevron"></span></button>
+      <div class="nav-dropdown" role="menu">
+        <a href="index.html#brief" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>The SKU Brief</span><span class="nav-dd-sub">Insights for beauty operators</span></div></a>
+        <a href="index.html#cases" class="nav-dd-link" role="menuitem"><div class="nav-dd-link-inner"><span>Case Studies</span><span class="nav-dd-sub">Real launches. Real results.</span></div></a>
+      </div>
+    </li>
+    <li><a href="index.html#contact" class="nav-cta">Start the Conversation</a></li>
+  </ul>
+</nav>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <p class="cs-hero-eyebrow">Case Study 001 &nbsp;·&nbsp; Product Development &nbsp;·&nbsp; Launch Execution</p>
+    <h1>THE<br>MISALIGNMENT<br>TAX</h1>
+    <p class="cs-hero-sub">Inside a failed beauty launch: what went wrong before it ever hit shelf.</p>
+    <p class="cs-hero-lede">
+      There was nothing wrong with the product. That is what made the failure so expensive.
+      Strong concept. On-trend active ingredient. Clean positioning. Early retail interest.
+      The kind of launch founders feel confident about, and should. It stalled anyway.
+      Not in the market. Before it got there.
+    </p>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Launch Intelligence <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Execution Leadership <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Launch Triage™ <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Deviation Intelligence System™ <span class="marquee-sep"></span></span>
+    <span class="marquee-item">From Formulation to Market <span class="marquee-sep"></span></span>
+    <span class="marquee-item">We Execute. <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Launch Intelligence <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Execution Leadership <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Launch Triage™ <span class="marquee-sep"></span></span>
+    <span class="marquee-item">Deviation Intelligence System™ <span class="marquee-sep"></span></span>
+    <span class="marquee-item">From Formulation to Market <span class="marquee-sep"></span></span>
+    <span class="marquee-item">We Execute. <span class="marquee-sep"></span></span>
+  </div>
+</div>
+
+<article class="cs-article">
+
+  <div class="cs-section">
+    <p class="s-label">The Setup</p>
+    <h2>Eight months in.<br><em>Already behind.</em></h2>
+    <p>
+      A prestige skincare SKU built around a high-demand active ingredient. Mid-tier price point.
+      Strong efficacy claims. Positioned for specialty retail entry.
+    </p>
+    <p>
+      The brand had been in development for eight months. From the inside, it looked like momentum.
+      The founder described the project as ahead of schedule two weeks before the timeline collapsed.
+    </p>
+    <p>
+      That confidence was not dishonest. It was structural. The system they were using could not
+      show them what was actually true.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <p class="stat-desc">Months in development before collapse</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <p class="stat-desc">Simultaneous misalignments, all invisible</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <p class="stat-desc">Early warnings surfaced by existing systems</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="cs-section">
+    <p class="s-label">What Was Actually Breaking</p>
+    <h2>The launch was not failing.<br><em>It was misaligned.</em></h2>
+    <p>Four places, simultaneously, quietly.</p>
+
+    <div class="failure-grid">
+      <div class="f-card">
+        <div class="f-card-num">01</div>
+        <div class="f-card-label">Formula Not Locked</div>
+        <p>
+          Stability questions at scale, texture variance across batches, and compatibility issues
+          with the final packaging component were all flagged internally as minor. They were treated
+          as downstream problems to solve later. They were not. They were upstream constraints that
+          made "later" impossible to predict.
+        </p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-card-num">02</div>
+        <div class="f-card-label">Manufacturing Too Late</div>
+        <p>
+          The contract manufacturer was not brought into formulation decisions early enough to weigh
+          in on batch scaling realities or processing constraints. By the time volume conversations
+          began, the formula had to adapt around the process. Every accommodation cost time the
+          timeline had no room for.
+        </p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-card-num">03</div>
+        <div class="f-card-label">Claims Outran Substantiation</div>
+        <p>
+          Marketing had built positioning around strong efficacy claims. Testing timelines were
+          running six to eight weeks behind launch timelines. Regulatory review introduced
+          additional delays at the worst possible moment, when retailer commitments were already
+          in motion.
+        </p>
+      </div>
+
+      <div class="f-card">
+        <div class="f-card-num">04</div>
+        <div class="f-card-label">Timeline Built on Assumptions</div>
+        <p>
+          Every workstream had its own internal schedule. None were pressure-tested against each
+          other. No buffers for iteration. No integration points between formulation, manufacturing,
+          claims, and retail readiness. One slip in any lane compounded across all of them.
+        </p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>
+        The team faced a forced choice with no good options: delay the launch or soften the claims.
+        Neither had been planned for. Both carried real cost.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="cs-section">
+    <p class="s-label">The Real Failure</p>
+    <h2>Not a product failure.<br><em>A decision architecture failure.</em></h2>
+    <p>
+      The brand was making real decisions on formula, on manufacturing, on claims, on timeline
+      with an incomplete picture of how those decisions connected to each other. By the time the
+      misalignment surfaced, they had already absorbed the cost of it.
+    </p>
+    <p>
+      The issues were not hidden. They were visible. Just not to a system designed to catch them.
+    </p>
+
+    <div class="callout">
+      <div class="callout-illo">!</div>
+      <p>
+        Misalignment does not show up all at once. It builds quietly across decisions that seem
+        small in isolation. By the time it becomes visible, you have already lost time, money,
+        and optionality.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="cs-section">
+    <p class="s-label">What Early Diagnosis Changes</p>
+    <h2>The difference between a crisis and a cheap fix<br><em>is almost entirely when it is surfaced.</em></h2>
+    <p>
+      The four failure points above are not late-stage crises. They are early-stage signals.
+      Applied before formulation lock, a structured Launch Triage™ assessment would have identified:
+    </p>
+
+    <div class="signals-box">
+      <p class="s-label">Early Signals — What Launch Triage™ Would Have Found</p>
+      <h3>Four findings. All fixable. None surfaced.</h3>
+      <ul class="signal-list">
+        <li>Stability and compatibility gaps treated as hard dependencies, not minor to-dos — requiring resolution before any scale decision could be made</li>
+        <li>Manufacturing constraints that should have shaped formulation decisions, not reacted to them, eliminating weeks of downstream rework</li>
+        <li>A claims substantiation gap large enough to delay or derail retail timing if left unaddressed at this stage</li>
+        <li>A timeline with no structural resilience, and the specific integration points where compounding failure was already baked in</li>
+      </ul>
+    </div>
+
+    <p>
+      None of those findings require hindsight. They require the right diagnostic questions asked
+      at the right moment. That is the intervention. Not more effort. Not more meetings.
+      A cleaner map of what is actually true before commitments get made.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="cs-section">
+    <p class="s-label">The Pattern</p>
+    <h2>This launch is not unusual.</h2>
+    <p>
+      Most beauty launches that stall do not fail because the product is wrong. They fail because
+      alignment happens too late, risks stay invisible too long, and confidence gets built on
+      information that feels complete but is not.
+    </p>
+    <p>
+      By the time something feels off, you have already paid the tax.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="cs-section">
+    <p class="s-label">Where This Leaves You</p>
+    <h2>Most founders are answering<br><em>the wrong question.</em></h2>
+    <p>
+      If you are in development right now, the question is not whether the product is good.
+      It is whether the system holding the launch together is actually sound.
+    </p>
+    <p>
+      Those are different questions. The second one is where launches are won or lost.
+    </p>
+  </div>
+
+  <div class="cta-block" id="triage">
+    <p class="cta-eyebrow">Launch Triage™ by SKU Beauty</p>
+    <h2>KNOW WHAT YOU ARE<br>BUILDING ON.</h2>
+    <p>
+      Launch Triage™ is SKU Beauty's diagnostic assessment for brands in active development.
+      It maps hidden dependencies, surfaces structural risks, and gives you a clear picture
+      of where your launch actually stands before critical decisions get locked.
+    </p>
+    <a href="mailto:contact@skubeauty.com?subject=Launch%20Triage%20Assessment%20Request" class="cta-btn">
+      Request a Launch Triage Assessment
+    </a>
+    <p class="cta-sub">contact@skubeauty.com &nbsp;·&nbsp; skubeauty.com</p>
+  </div>
+
+</article>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-rule-top"></div>
+  <div class="footer-tagline-band">
+    <p class="footer-tagline-eyebrow">SKU Beauty LLC</p>
+    <p class="footer-tagline">Launch intelligence &amp; execution leadership for beauty brands.</p>
+  </div>
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <div class="footer-wordmark">SKU<span>&nbsp;</span>Beauty</div>
+      <p class="footer-brand-desc">Strategic brand-building from concept through counter — built for founders who move fast.</p>
+    </div>
+    <div class="footer-nav-group">
+      <div class="footer-nav-label">Company</div>
+      <a href="our-story.html" class="footer-nav-link">Our Story</a>
+      <a href="index.html#approach" class="footer-nav-link">Approach</a>
+      <a href="index.html#sku-system" class="footer-nav-link">The SKU System</a>
+      <a href="index.html#services" class="footer-nav-link">Services</a>
+      <a href="index.html#cases" class="footer-nav-link">Case Studies</a>
+      <a href="our-story.html#team" class="footer-nav-link">Our Team</a>
+      <a href="index.html#contact" class="footer-nav-link">Contact</a>
+    </div>
+    <div class="footer-nav-group">
+      <div class="footer-nav-label">Insights</div>
+      <a href="index.html#brief" class="footer-nav-link">The SKU Brief</a>
+      <a href="index.html#newsletter" class="footer-nav-link">Join the List</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 SKU Beauty LLC. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
