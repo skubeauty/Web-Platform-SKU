@@ -511,7 +511,7 @@ p { font-size: 0.975rem; font-weight: 400; color: var(--ink); line-height: 1.8; 
 .story-teaser-hed em { font-style: italic; color: var(--yellow); }
 .story-teaser-content { padding-top: 0; }
 .story-teaser-body { font-size: 15px; line-height: 1.92; font-weight: 400; color: rgba(255,255,255,.78); margin-bottom: 36px; }
-.story-teaser-body p { margin-bottom: 1.2em; }
+.story-teaser-body p { margin-bottom: 1.2em; color: rgba(255, 255, 255, 0.78); }
 .story-teaser-body p:last-child { margin-bottom: 0; }
 .story-teaser-link { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--yellow); border-bottom: 1px solid rgba(238,231,92,.35); padding-bottom: 3px; cursor: none; transition: gap .2s, border-color .2s; }
 .story-teaser-link:hover { gap: 16px; border-color: var(--yellow); }
