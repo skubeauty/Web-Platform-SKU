@@ -136,28 +136,28 @@
   <main class="insights-grid">
     
     <a href="/sku-article-fractional-leadership.html" class="insight-card">
-      <div class="card-meta">Leadership • 5 Min Read</div>
+      <div class="card-meta">Leadership • 7 Min Read</div>
       <h2 class="card-title">What Fractional Product Leadership Actually Looks Like</h2>
       <p class="card-excerpt">Most beauty brands don't need a full-time executive—they need an operator who can parachute in, fix the execution gap, and leave a system behind.</p>
       <div class="card-link">Read Article &rarr;</div>
     </a>
 
     <a href="/sku-article-launch-governance.html" class="insight-card">
-      <div class="card-meta">Strategy • 4 Min Read</div>
+      <div class="card-meta">Strategy • 6 Min Read</div>
       <h2 class="card-title">Launch Governance: The Missing Discipline</h2>
       <p class="card-excerpt">Why great formulations fail at the finish line, and how implementing strict launch governance prevents timeline collapse and budget overruns.</p>
       <div class="card-link">Read Article &rarr;</div>
     </a>
 
     <a href="/sku-article-manufacturing-alignment.html" class="insight-card">
-      <div class="card-meta">Operations • 6 Min Read</div>
+      <div class="card-meta">Operations • 5 Min Read</div>
       <h2 class="card-title">Manufacturing Alignment & The Scale-Up Cliff</h2>
       <p class="card-excerpt">Bridging the gap between the lab bench and the factory floor. How to vet partners and scale your formulas without losing efficacy.</p>
       <div class="card-link">Read Article &rarr;</div>
     </a>
 
     <a href="/sku-why-we-started.html" class="insight-card">
-      <div class="card-meta">Origin • 3 Min Read</div>
+      <div class="card-meta">Origin • 5 Min Read</div>
       <h2 class="card-title">Why We Started SKU Beauty</h2>
       <p class="card-excerpt">After decades inside the world's top beauty conglomerates, we realized the system was broken. Here is how we set out to fix it.</p>
       <div class="card-link">Read Article &rarr;</div>
@@ -188,20 +188,20 @@
     <div class="footer-nav-group">
       <div class="footer-nav-label">Company</div>
       <a href="sku-why-we-started.html" class="footer-nav-link">Our Story</a>
-      <a href="#sku-system" class="footer-nav-link">Approach</a>
-      <a href="#sku-system" class="footer-nav-link">The SKU System</a>
-      <a href="#approach" class="footer-nav-link">The SKU System</a>
-      <a href="#outcomes" class="footer-nav-link">Outcomes</a>
-      <a href="#cases" class="footer-nav-link">Case Studies</a>
+      <a href="index.html#sku-system" class="footer-nav-link">Approach</a>
+      <a href="index.html#sku-system" class="footer-nav-link">The SKU System</a>
+      <a href="index.html#approach" class="footer-nav-link">The SKU System</a>
+      <a href="index.html#outcomes" class="footer-nav-link">Outcomes</a>
+      <a href="index.html#cases" class="footer-nav-link">Case Studies</a>
       <a href="our-story.html#team" class="footer-nav-link">Our Team</a>
-      <a href="#contact" class="footer-nav-link">Contact</a>
+      <a href="index.html#contact" class="footer-nav-link">Contact</a>
     </div>
 
     <!-- Insights + Legal links -->
     <div class="footer-nav-group">
       <div class="footer-nav-label">Insights</div>
-      <a href="#brief" class="footer-nav-link">The SKU Brief</a>
-      <a href="#newsletter" class="footer-nav-link">Join the List</a>
+      <a href="insights.html" class="footer-nav-link">The SKU Brief</a>
+      <a href="index.html#newsletter" class="footer-nav-link">Join the List</a>
       <div class="footer-nav-label" style="margin-top:22px;">Legal</div>
       <a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a>
       <a href="terms.html" class="footer-nav-link">Terms of Use</a>
@@ -217,68 +217,6 @@
 
   <div class="sku-cursor" id="cursor"></div>
   <div class="sku-cursor-ring" id="cursorRing"></div>
-
-  <script>
-    (function() {
-      // Navbar Logic
-      const navItems = document.querySelectorAll('.nav-item');
-      const navBtns = document.querySelectorAll('.nav-btn');
-
-      navBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const parentItem = btn.closest('.nav-item');
-          const isOpen = parentItem.classList.contains('open');
-          
-          navItems.forEach(item => item.classList.remove('open'));
-          
-          if (!isOpen) {
-            parentItem.classList.add('open');
-          }
-        });
-      });
-
-      document.addEventListener('click', () => {
-        navItems.forEach(item => item.classList.remove('open'));
-      });
-
-      // Cursor Logic
-      const cur = document.getElementById('cursor');
-      const ring = document.getElementById('cursorRing');
-      if (!cur || !ring) return;
-
-      let mx = 0, my = 0, rx = 0, ry = 0;
-      
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; 
-        my = e.clientY;
-        cur.style.left = mx + 'px'; 
-        cur.style.top = my + 'px';
-      });
-
-      (function loop() {
-        rx += (mx - rx) * 0.11;
-        ry += (my - ry) * 0.11;
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-        requestAnimationFrame(loop);
-      })();
-
-      const addHoverStates = () => {
-        document.querySelectorAll('a, button, input, textarea').forEach(el => {
-          el.addEventListener('mouseenter', () => { 
-            cur.classList.add('hov'); 
-            ring.classList.add('hov'); 
-          });
-          el.addEventListener('mouseleave', () => { 
-            cur.classList.remove('hov'); 
-            ring.classList.remove('hov'); 
-          });
-        });
-      };
-      
-      addHoverStates();
-    })();
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>

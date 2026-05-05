@@ -240,7 +240,7 @@
         <div class="hero-media" aria-hidden="true">
             <!-- IMAGE option — replace src with your own file path when ready -->
             <!-- Currently using a free demo image from Unsplash so you can see the feature working -->
-            <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=1800&auto=format&fit=crop" alt="">
+            
 
             <!-- VIDEO option — comment out the img above and uncomment this when you have a video -->
             <!--
@@ -933,9 +933,7 @@
             <div class="contact-detail">
                 <div>
                     <div class="contact-detail-label">Email</div><a
-                        href="/cdn-cgi/l/email-protection#395a56574d585a4d794a524c5b5c584c4d40175a5654"><span
-                            class="__cf_email__"
-                            data-cfemail="55363a3b2134362115263e2037303420212c7b363a38">[email&#160;protected]</span></a>
+                        href="mailto:contact@skubeauty.com?subject=Contact%20Inquiry">[contact@skubeauty.com]</span></a>
                 </div>
                 <div>
                     <div class="contact-detail-label">Company</div><span
@@ -1010,7 +1008,7 @@
             <!-- Insights + Legal links -->
             <div class="footer-nav-group">
                 <div class="footer-nav-label">Insights</div>
-                <a href="#brief" class="footer-nav-link">The SKU Brief</a>
+                <a href="insights.html" class="footer-nav-link">The SKU Brief</a>
                 <a href="#newsletter" class="footer-nav-link">Join the List</a>
                 <div class="footer-nav-label" style="margin-top:22px;">Legal</div>
                 <a href="privacy-policy.html" class="footer-nav-link">Privacy Policy</a>
@@ -1024,243 +1022,7 @@
             <span class="footer-copy">&copy; 2025 SKU Beauty LLC. All rights reserved.</span>
         </div>
     </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        // Cursor
-        const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
-        let mx = 0, my = 0, rx = 0, ry = 0;
-        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-        (function loop() { rx += (mx - rx) * .11; ry += (my - ry) * .11; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
-        document.querySelectorAll('a,button,input,textarea').forEach(el => {
-            el.addEventListener('mouseenter', () => { cur.classList.add('hov'); ring.classList.add('hov'); });
-            el.addEventListener('mouseleave', () => { cur.classList.remove('hov'); ring.classList.remove('hov'); });
-        });
-
-
-        // ── NAV DROPDOWN CLICK TOGGLE ──
-        // Makes dropdowns open on click (in addition to hover) for reliability
-        document.querySelectorAll('.nav-item > button[aria-haspopup]').forEach(btn => {
-            btn.addEventListener('click', e => {
-                e.stopPropagation();
-                const item = btn.closest('.nav-item');
-                const isOpen = item.classList.contains('open');
-                // Close all open dropdowns first
-                document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
-                if (!isOpen) item.classList.add('open');
-            });
-        });
-        // Close dropdowns when clicking elsewhere
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
-        });
-        // Close dropdown after clicking a link inside it
-        document.querySelectorAll('.nav-dd-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
-            });
-        });
-
-        // Smooth scroll for Safari
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            });
-        });
-
-        // Sticky nav
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
-
-        // Scroll reveal
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: .08, rootMargin: '0px 0px -32px 0px' });
-        document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
-
-        // ── CASE STUDY VISIBILITY TOGGLE ──
-        // Set to false to hide the Case Studies section and its nav link at any time
-        const SHOW_CASE_STUDIES = true;
-        (function () {
-            const casesSection = document.getElementById('cases');
-            const casesNavLinks = document.querySelectorAll('a[href="#cases"]');
-            if (!SHOW_CASE_STUDIES) {
-                if (casesSection) casesSection.style.display = 'none';
-                casesNavLinks.forEach(function (link) { link.parentElement.style.display = 'none'; });
-            }
-        })();
-
-        // ── FORMSPREE FORM HANDLERS ──
-        // HOW TO SET UP YOUR FORM IDs:
-        //   1. Go to https://formspree.io and create a free account
-        //   2. Click "New Form" — create one called "SKU Contact" and one called "SKU Newsletter"
-        //   3. Each form will give you a unique ID (looks like: xabcdefg)
-        //   4. Replace YOUR_CONTACT_FORM_ID below with the Contact form ID
-        //   5. Replace YOUR_EMAIL_FORM_ID below with the Newsletter form ID
-        //   Both forms serve different purposes:
-        //     · CONTACT: receives inquiries from the contact section (name, email, message)
-        //     · EMAIL:   captures newsletter subscribers so you can send blog posts/updates
-        const CONTACT_ENDPOINT = 'https://formspree.io/f/YOUR_CONTACT_FORM_ID';
-        const EMAIL_ENDPOINT = 'https://formspree.io/f/YOUR_EMAIL_FORM_ID';
-        const CONTACT_EMAIL = 'contact@skubeauty.com';
-
-        // HOW TO ACTIVATE FORMSPREE:
-        //   1. Go to https://formspree.io and create a free account
-        //   2. Create a form for Contact and one for Newsletter
-        //   3. Replace YOUR_CONTACT_FORM_ID and YOUR_EMAIL_FORM_ID above
-        //      with the real IDs (e.g. xabcdefg) — the mailto fallback below
-        //      will then be bypassed automatically.
-
-        async function submitContact(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const orig = btn.innerHTML;
-
-            // --- mailto fallback while Formspree is not yet configured ---
-            if (CONTACT_ENDPOINT.includes('YOUR_')) {
-                const name = e.target.querySelector('[name="name"]').value;
-                const email = e.target.querySelector('[name="email"]').value;
-                const website = e.target.querySelector('[name="website"]') ? e.target.querySelector('[name="website"]').value : '';
-                const message = e.target.querySelector('[name="message"]').value;
-                const subject = encodeURIComponent('SKU Beauty Inquiry from ' + name);
-                const body = encodeURIComponent(
-                    'Name & Company: ' + name + '\n' +
-                    'Email: ' + email + '\n' +
-                    (website ? 'Website: ' + website + '\n' : '') +
-                    '\nMessage:\n' + message
-                );
-                window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
-                document.getElementById('contact-success').style.display = 'block';
-                e.target.reset();
-                btn.innerHTML = 'Sent ✓';
-                return;
-            }
-
-            btn.innerHTML = 'Sending…';
-            btn.disabled = true;
-            try {
-                const res = await fetch(CONTACT_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: new FormData(e.target)
-                });
-                if (res.ok) {
-                    document.getElementById('contact-success').style.display = 'block';
-                    e.target.reset();
-                    btn.innerHTML = 'Sent ✓';
-                } else {
-                    btn.innerHTML = 'Error — try again';
-                    btn.disabled = false;
-                }
-            } catch (err) {
-                btn.innerHTML = 'Error — try again';
-                btn.disabled = false;
-            }
-        }
-
-        function submitEmail(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-
-            const email = e.target.querySelector('[name="email"]').value;
-            const subject = encodeURIComponent("Newsletter Signup - The SKU Brief");
-
-            const body = encodeURIComponent(
-                'Please add me to The SKU Brief newsletter.\n\n' +
-                'Email: ' + email + '\n\n' +
-                '----------------------------------------\n' +
-                'To help us send you the most relevant insights, let us know what topics you are most interested in:\n\n' +
-                '- \n'
-            );
-
-            window.location.href = `mailto:newsletter@skubeauty.com?subject=${subject}&body=${body}`;
-
-            document.getElementById("email-success").style.display = "block";
-            e.target.reset();
-        }
-    </script>
-    <script>
-        /* ── Hero diamond: facet lighting + parallax ── */
-        (function () {
-            const hero = document.querySelector('.hero');
-            if (!hero) return;
-
-            const gem = document.getElementById('hero-gem');
-
-            const facets = [
-                { el: document.getElementById('gem-top'), nx: 0.25, ny: -1.0, base: .04, max: .22 },
-                { el: document.getElementById('gem-right'), nx: 1.0, ny: 0.25, base: .07, max: .28 },
-                { el: document.getElementById('gem-left'), nx: -1.0, ny: -0.25, base: .10, max: .32 },
-                { el: document.getElementById('gem-bot'), nx: -0.25, ny: 1.0, base: .06, max: .24 },
-            ];
-            if (facets.some(f => !f.el)) return;
-
-            let mx = 0.5, my = 0.5;
-            let tx = 0, ty = 0;
-            let idleT = 0;
-            let ticking = false;
-
-            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-            function norm(x, y) { const m = Math.sqrt(x * x + y * y); return m ? [x / m, y / m] : [0, 0]; }
-
-            function applyLighting() {
-                /* Diamond center sits at approx 78% width, 52% height of hero */
-                const dcx = 0.78, dcy = 0.52;
-                const lx = mx - dcx, ly = my - dcy;
-                const [nx, ny] = norm(lx, ly);
-                facets.forEach(f => {
-                    const dot = clamp(nx * f.nx + ny * f.ny, 0, 1);
-                    const op = f.base + dot * (f.max - f.base);
-                    f.el.style.fill = `rgba(46,64,119,${op.toFixed(3)})`;
-                });
-            }
-
-            function applyParallax() {
-                const tgtX = (mx - 0.5) * -22;
-                const tgtY = (my - 0.5) * -14;
-                tx += (tgtX - tx) * 0.07;
-                ty += (tgtY - ty) * 0.07;
-                gem.style.transform = `translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px)`;
-                return Math.abs(tgtX - tx) > 0.1 || Math.abs(tgtY - ty) > 0.1;
-            }
-
-            function tick() {
-                applyLighting();
-                const still = !applyParallax();
-                ticking = !still;
-                if (!still) requestAnimationFrame(tick);
-            }
-
-            /* Idle shimmer when no mouse activity */
-            function idleShimmer() {
-                if (!ticking) {
-                    idleT += 0.004;
-                    facets.forEach((f, i) => {
-                        const pulse = f.base + (Math.sin(idleT + i * Math.PI * 0.5) * 0.5 + 0.5) * (f.max - f.base) * 0.18;
-                        f.el.style.fill = `rgba(46,64,119,${pulse.toFixed(3)})`;
-                    });
-                }
-                requestAnimationFrame(idleShimmer);
-            }
-            idleShimmer();
-
-            hero.addEventListener('mousemove', e => {
-                const r = hero.getBoundingClientRect();
-                mx = (e.clientX - r.left) / r.width;
-                my = (e.clientY - r.top) / r.height;
-
-                /* Custom cursor */
-
-                if (!ticking) { ticking = true; requestAnimationFrame(tick); }
-            });
-
-            hero.addEventListener('mouseleave', () => {
-                mx = 0.5; my = 0.5;
-                if (!ticking) { ticking = true; requestAnimationFrame(tick); }
-            });
-        })();
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
