@@ -27,11 +27,11 @@ function submitContact(e) {
     
     document.getElementById('contact-success').style.display = 'block';
     e.target.reset();
-    btn.innerHTML = 'Sent ✓';
 }
 
 function submitEmail(e) {
     e.preventDefault();
+    console.log("running newsletter");
     const btn = e.target.querySelector('button[type="submit"]');
 
     const email = e.target.querySelector('[name="email"]').value;
