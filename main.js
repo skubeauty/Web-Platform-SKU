@@ -45,7 +45,7 @@ function submitEmail(e) {
         '- \n'
     );
 
-    window.location.href = `mailto:contact@skubeauty.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@skubeauty.com?subject=${subject}&body=${body}`;
 
     document.getElementById("email-success").style.display = "block";
     e.target.reset();
