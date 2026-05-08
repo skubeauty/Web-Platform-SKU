@@ -29,7 +29,7 @@ function submitContact(e) {
     e.target.reset();
 }
 
-function submitEmail(e) {
+function addToNewsletter(e) {
     e.preventDefault();
     console.log("running newsletter");
     const btn = e.target.querySelector('button[type="submit"]');
@@ -47,13 +47,12 @@ function submitEmail(e) {
 
     window.location.href = `mailto:info@skubeauty.com?subject=${subject}&body=${body}`;
 
-    document.getElementById("email-success").style.display = "block";
     e.target.reset();
     btn.innerHTML = 'Joined ✓';
 }
 
 window.submitContact = submitContact;
-window.submitEmail = submitEmail;
+window.addToNewsletter = addToNewsletter;
 
 
 // ── 2. CURSOR LOGIC ──
