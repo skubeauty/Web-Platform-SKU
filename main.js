@@ -69,30 +69,43 @@ if (cur && ring) {
     });
 }
 
-// ── 3. NAV DROPDOWN CLICK TOGGLE ──
-document.querySelectorAll('.nav-item > button[aria-haspopup]').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const item = btn.closest('.nav-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
+// ── 3. NAV DROPDOWN HOVER TOGGLE (WITH DELAY) ──
+let dropdownTimeout;
+
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        // 1. Cancel the timer if the user quickly moves the mouse back in
+        clearTimeout(dropdownTimeout);
+        
+        // 2. Close any other open menus, except this one
+        document.querySelectorAll('.nav-item.open').forEach(el => {
+            if (el !== item) el.classList.remove('open');
+        });
+        
+        // 3. Open the current menu
+        item.classList.add('open');
+    });
+
+    item.addEventListener('mouseleave', () => {
+        // Wait 200 milliseconds before closing. 
+        // This gives the user time to cross the "gap" to the dropdown menu.
+        dropdownTimeout = setTimeout(() => {
+            item.classList.remove('open');
+        }, 200); 
     });
 });
-document.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
-});
+
+// Close the menu when a link inside it is actually clicked
 document.querySelectorAll('.nav-dd-link').forEach(link => {
     link.addEventListener('click', () => {
         document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
     });
 });
 
-// ── 4. SMOOTH SCROLL FOR SAFARI ──
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+// Close the menu when a link inside it is actually clicked
+document.querySelectorAll('.nav-dd-link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'));
     });
 });
 

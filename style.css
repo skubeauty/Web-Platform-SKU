@@ -800,3 +800,20 @@ p { font-size: 0.975rem; font-weight: 400; color: var(--ink); line-height: 1.8; 
   .footer-top { grid-template-columns: 1fr; }
   .footer-nav-group+.footer-nav-group { border-left: none; border-top: 1px solid rgba(255,255,255,.07); }
 }
+
+
+/* Handle visibility ONLY - let your original CSS handle the positioning! */
+.nav-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    
+    /* This overrides the old click-based "display: none" so the fade works */
+    display: block !important; 
+}
+
+/* Show when JS adds the .open class */
+.nav-item.open .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+}
